@@ -10,9 +10,13 @@ function run() {
 
     // 2) Upload files
     const s3Uri = `s3://${bucket}`
+
+    core.notice(
+      `Executing AWS S3 sync for bucket ${bucket} and region ${region}`
+    );
+
     exec.exec(`aws s3 sync ${distFolder} ${s3Uri} --region ${region}`)
 
-    core.notice(`AWS S3 sync completed for bucket ${bucket} and region ${region}`)
  }
 
 run();
